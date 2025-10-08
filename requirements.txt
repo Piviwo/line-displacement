@@ -1,0 +1,10 @@
+shapefile==2.3.1
+geopandas==1.0.1
+numpy==1.26.4
+matplotlib==3.9.2
+scipy==1.14.1
+scikit-learn==1.5.2
+shapely==2.1.1
+torch==2.4.1
+torch-geometric==2.5.3
+networkx==3.3
