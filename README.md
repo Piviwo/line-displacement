@@ -11,17 +11,22 @@ This repository explores two approaches for modeling river polylines and predict
 
 ```
 ├── data/                 
-│   ├── sequences.npy      # (N, 64, 2) river coordinate sequences
-│   └── graphs.pt          # Graphs built from sequences (PyTorch Geometric)
+│   ├── sequence
+│   │    └── sequences.npy           # (N, 64, 2) river coordinate sequences
+│   ├── graph
+│       └── graphs_delaunay.pt       # Graphs built from sequences (PyTorch Geometric)
+│       └── graphs_sequential.pt     
+│   ├── original 
+│       └── Input Shapefiles         # Input Shapefile   
 ├── preprocessing/
-│   ├── pre_seq.py         # Preprocessing sequential data
-│   ├── pre_graph.py       # Preprocessing graph data
+│   ├── pre_seq.py                   # Preprocessing sequential data
+│   ├── pre_graph.py                 # Preprocessing graph data
 ├── models/
-│   ├── siamese_lstm.py    # Siamese LSTM Autoencoder
-│   ├── gat_model.py       # Graph Attention Network implementation
-├── train_lstm.py          # Training script for LSTM autoencoder
-├── train_gat.py           # Training script for GAT model
-├── utils.py               # Preprocessing, graph construction, visualization
+│   ├── siamese_lstm.py              # Siamese LSTM Autoencoder
+│   ├── gat_model.py                 # Graph Attention Network implementation
+├── train_lstm.py                    # Training script for LSTM autoencoder
+├── train_gat.py                     # Training script for GAT model
+├── utils.py                         # Preprocessing, graph construction, visualization
 └── README.md
 ```
 
