@@ -18,15 +18,22 @@ This repository explores two approaches for modeling river polylines and predict
 │       └── graphs_sequential.pt     
 │   ├── original 
 │       └── Input Shapefiles         # Input Shapefile   
+│
 ├── preprocessing/
 │   ├── pre_seq.py                   # Preprocessing sequential data
 │   ├── pre_graph.py                 # Preprocessing graph data
+│
 ├── models/
 │   ├── siamese_lstm.py              # Siamese LSTM Autoencoder
 │   ├── gat_model.py                 # Graph Attention Network implementation
+│
+├── checkpoints/                 
+│   ├── model                        # Saved models
+│   ├── weights                      # Saved weights 
+│
 ├── train_lstm.py                    # Training script for LSTM autoencoder
 ├── train_gat.py                     # Training script for GAT model
-├── utils.py                         # Preprocessing, graph construction, visualization
+├── environment.yml                  # Conda Environment Description 
 └── README.md
 ```
 
