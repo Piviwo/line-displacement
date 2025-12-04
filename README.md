@@ -11,28 +11,41 @@ This repository explores two approaches for modeling river polylines and predict
 
 ```
 ├── data/                 
-│   ├── sequence
+│   ├── sequence/
 │   │    └── sequences.npy           # (N, 64, 2) river coordinate sequences
-│   ├── graph
+│   ├── graph/
 │       └── graphs_delaunay.pt       # Graphs built from sequences (PyTorch Geometric)
 │       └── graphs_sequential.pt     
 │   ├── original 
 │       └── Input Shapefiles         # Input Shapefile   
 │
 ├── preprocessing/
-│   ├── pre_seq.py                   # Preprocessing sequential data
-│   ├── pre_graph.py                 # Preprocessing graph data
+│   ├── pre_seq.ipynb                # Preprocessing sequential data
+│   ├── pre_graph.ipynb              # Preprocessing graph data
 │
 ├── models/
-│   ├── siamese_lstm.py              # Siamese LSTM Autoencoder
-│   ├── gat_model.py                 # Graph Attention Network implementation
+│   ├── siamese_lstm.py              # Training script for LSTM autoencoder
+│   ├── gat_model.py                 # Training script for GAT model
 │
 ├── checkpoints/                 
-│   ├── model                        # Saved models
-│   ├── weights                      # Saved weights 
+│   ├── autoencoder/
+│   │    └── history/                # Model history 
+│   │    └── model/                  # Model files
+│   │    └── tuner_results/          # Results retrieved by Bayesian Optimization
+│   │    └── weights/                # Model weights 
+│   ├── siamese/
+│   │    └── history/
+│   │    └── model/
+│   │    └── tuner_results/
+│   │    └── weights/
+│   ├── graph/
+│        └── history/        
+│        └── model
 │
-├── train_lstm.py                    # Training script for LSTM autoencoder
-├── train_gat.py                     # Training script for GAT model
+├── preprocessing/
+│   ├── data_visualization.ipynb     # Jupyter Notebook for visualizing the input data 
+│   ├── result_visualization.ipynb   # Jupyter Notebook for visualizing the results
+│
 ├── environment.yml                  # Conda Environment Description 
 └── README.md
 ```
@@ -53,13 +66,12 @@ Stored in `sequences.npy` as numpy arrays of shape **(N, 64, 2)**:
 
 Stored in `graphs.pt` as PyTorch Geometric objects.
 
-* **Nodes**: river points
-* **Node features**: line ID, `(x, y)` coordinates, sequence length, distances to other lines
+* **Nodes**: points along vector line
+* **Node features**: line ID, `(x, y)` coordinates, sequence length, distances to other lines, angle
 * **Edges**:
 
   * Sequential (chain)
-  * Delaunay triangulation
-  * Hybrid
+  * Hybrid: Sequential & Delaunay triangulation
 
 ---
 
@@ -67,17 +79,17 @@ Stored in `graphs.pt` as PyTorch Geometric objects.
 
 ### Preprocessing
 
-```bash
+<!-- ```bash
 # For sequence data
 python preprocessing/pre_seq.py
 
 # For graph data
 python preprocessing/pre_graph.py
-```
+``` -->
 
 ### Training
 
-```bash
+<!-- ```bash
 # Train Siamese LSTM Autoencoder
 python train_lstm.py
 
@@ -85,7 +97,7 @@ python train_lstm.py
 python train_gat.py
 ```
 
----
+--- -->
 
 ## 🛠 Requirements
 
