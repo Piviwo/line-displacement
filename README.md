@@ -1,9 +1,9 @@
-# River Line Models: Sequence vs Graph
+# Line Displacement using Deep Learning
 
-This repository explores two approaches for modeling river polylines and predicting shifts between them:
+This repository explores two approaches for encoding and modeling line displacement.
 
-* **Siamese LSTM Autoencoder** — a sequence-based model that encodes and reconstructs river coordinate sequences.
-* **Graph Attention Network (GAT)** — a graph neural network that leverages spatial and structural relationships between river points.
+* **Siamese LSTM Autoencoder** — a sequence-based model that predicts coordinate sequences.
+* **Graph Neural Network (GNN)** — a graph neural network that predicts shift vectors for graphs.
 
 ---
 
@@ -11,106 +11,38 @@ This repository explores two approaches for modeling river polylines and predict
 
 ```
 ├── data/                 
-│   ├── sequence/
-│   │    └── sequences.npy           # (N, 64, 2) river coordinate sequences
-│   ├── graph/
-│       └── graphs_delaunay.pt       # Graphs built from sequences (PyTorch Geometric)
-│       └── graphs_sequential.pt     
+│   ├── final_dataset/                  # Contains the final training and test datasets
+│   ├── preprocessing/                  # Contains Data from different preprocessing steps
+│   ├── results/                        # Contains Predicted Data and Evaluation Metrics
 │   ├── original 
-│       └── Input Shapefiles         # Input Shapefile   
+│       └── Input Shapefiles            # Input Shapefile   
 │
 ├── preprocessing/
-│   ├── pre_seq.ipynb                # Preprocessing sequential data
-│   ├── pre_graph.ipynb              # Preprocessing graph data
+│   ├── pre_seq.ipynb                   # Preprocessing sequential data
+│   ├── pre_graph.ipynb                 # Preprocessing graph data
 │
 ├── models/
-│   ├── siamese_lstm.py              # Training script for LSTM autoencoder
-│   ├── gat_model.py                 # Training script for GAT model
+│   ├── lstm_autoencoder.ipynb          # Training for LSTM Autoencoder
+│   ├── siamese_lstm_autoencoder.ipynb  # Training for Siamses LSTM Autoencoder
+│   ├── grpah_model.ipynb               # Training for GraphSAGE GNN models
 │
 ├── checkpoints/                 
 │   ├── autoencoder/
-│   │    └── history/                # Model history 
-│   │    └── model/                  # Model files
-│   │    └── tuner_results/          # Results retrieved by Bayesian Optimization
-│   │    └── weights/                # Model weights 
+│   │    └── history/                   # Model history 
+│   │    └── model/                     # Model files
+│   │    └── weights/                   # Model weights 
 │   ├── siamese/
 │   │    └── history/
 │   │    └── model/
-│   │    └── tuner_results/
 │   │    └── weights/
 │   ├── graph/
 │        └── history/        
 │        └── model
 │
-├── preprocessing/
-│   ├── data_visualization.ipynb     # Jupyter Notebook for visualizing the input data 
-│   ├── result_visualization.ipynb   # Jupyter Notebook for visualizing the results
+├── visualization/
+│   ├── result_visualization.ipynb      # Calculations for Evaluation Metrics and various Visualization functions
 │
-├── environment.yml                  # Conda Environment Description 
 └── README.md
-```
-
----
-
-## 🗂 Dataset
-
-### Sequences
-
-Stored in `sequences.npy` as numpy arrays of shape **(N, 64, 2)**:
-
-* **N**: number of river sequences
-* **64**: number of sampled points per polyline
-* **2**: coordinates `(x, y)`
-
-### Graphs
-
-Stored in `graphs.pt` as PyTorch Geometric objects.
-
-* **Nodes**: points along vector line
-* **Node features**: line ID, `(x, y)` coordinates, sequence length, distances to other lines, angle
-* **Edges**:
-
-  * Sequential (chain)
-  * Hybrid: Sequential & Delaunay triangulation
-
----
-
-## 🚀 Usage
-
-### Preprocessing
-
-<!-- ```bash
-# For sequence data
-python preprocessing/pre_seq.py
-
-# For graph data
-python preprocessing/pre_graph.py
-``` -->
-
-### Training
-
-<!-- ```bash
-# Train Siamese LSTM Autoencoder
-python train_lstm.py
-
-# Train Graph Attention Network
-python train_gat.py
-```
-
---- -->
-
-## 🛠 Requirements
-
-* Python 3.8+
-* PyTorch
-* PyTorch Geometric
-* NumPy
-* SciPy
-
-Install dependencies with:
-
-```bash
-pip install -r requirements.txt
 ```
 
 ---
@@ -119,6 +51,14 @@ pip install -r requirements.txt
 
 If you use this repository in your research, please cite it accordingly (bibtex entry to be added).
 
----
-
-## 📜 License
+@mastersthesis{Wolffram2026Thesis,
+  author       = {Wolffram, Pia},
+  title        = {{Line Displacement Using Deep Learning}},
+  school       = {Technical University of Munich},
+  year         = {2026},
+  address      = {Munich, Germany},
+  month        = {February},
+  type         = {Master's Thesis}, 
+  url          = {https://github.com/piviwo/line-displacement},
+  note         = {Available at GitHub}
+}
