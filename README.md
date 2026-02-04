@@ -52,14 +52,14 @@ This repository explores two approaches for encoding and modeling line displacem
 If you use this repository in your research, please cite it accordingly:
 
 ```bibtex
-@mastersthesis{XXX,
-  author       = {},
+@mastersthesis{Wolffram2026Thesis,
+  author       = {Wolffram, Pia},
   title        = {{Line Displacement Using Deep Learning}},
   school       = {Technical University of Munich},
   year         = {2026},
   address      = {Munich, Germany},
   month        = {February},
   type         = {Master's Thesis}, 
-  url          = {XXX},
+  url          = {https://github.com/Piviwo/line-displacement},
   note         = {Available at GitHub}
 }
