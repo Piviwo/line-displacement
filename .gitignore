@@ -8,6 +8,7 @@ __pycache__/
 
 data/preprocessing/
 data/original/
+data/results/
 
 # Distribution / packaging
 .Python
